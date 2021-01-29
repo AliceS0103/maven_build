@@ -10,11 +10,6 @@ pipeline {
     }
 
     stages {
-        stage("SCM checkout"){
-            steps{
-              git 'https://github.com/AliceS0103/maven_build'
-            }
-        }
         stage("Build") {
             steps {
                 sh "mvn -version"
