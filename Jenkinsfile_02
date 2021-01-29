@@ -25,7 +25,7 @@ pipeline {
         
         stage ('Copy artifact'){
             steps{
-              sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/github/wololock/maven-pipeline-demo/* /var/lib/jenkins/project'
+              sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/github/wololock/maven-pipeline-demo/* /projects'
             }
         }
     }
