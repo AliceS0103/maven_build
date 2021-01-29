@@ -19,16 +19,12 @@ pipeline {
             steps {
                 sh "mvn -version"
                 sh "mvn clean install"
+                sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/github/wololock/maven-pipeline-demo/* /var/lib/jenkins/project/'
             }
         }
         stage('Test') {
             steps {
                 sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
             }
         }
     }
