@@ -25,7 +25,7 @@ pipeline {
         
         stage ('Copy artifact'){
             steps{
-              sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/maven_build/1.0-SNAPSHOT/*.jar /root'
+              sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/maven_build/1.0-SNAPSHOT/*.jar /projects'
             }
         }
     }
