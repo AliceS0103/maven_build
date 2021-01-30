@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github.wololock</groupId>
-  <artifactId>maven-pipeline-demo</artifactId>
+  <groupId>com</groupId>
+  <artifactId>maven_build</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>maven-pipeline-demo</name>
