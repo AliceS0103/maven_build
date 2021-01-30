@@ -23,11 +23,12 @@ pipeline {
             }
         }
         
-        stage ('Copy artifact'){
-            steps{
-              sh 'cp /var/lib/jenkins/workspace/maven_build_2/?/.m2/repository/com/maven_build/1.0-SNAPSHOT/*.jar /var/lib/jenkins'
-            }
-        }
+       
+        stage ('Deploy Build in Staging Area') {
+			steps {
+				build job : 'delivery'
+			}
+		}
     }
 
     post {
