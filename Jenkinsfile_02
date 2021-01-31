@@ -1,13 +1,13 @@
 #!groovy
 
 pipeline {
-    agent {
-        docker {
-            image "maven:3.6.0-jdk-13"
+  agent {
+    docker {
+      image "maven:3.6.0-jdk-13"
             //label "docker"
-            args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
-        }
-    }
+      args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
+      }
+   }
 
     stages {
         stage("Build") {
@@ -25,10 +25,25 @@ pipeline {
         
        
         stage ('Deploy Build in Staging Area') {
-			steps {
-				build job : 'delivery'
-			}
+	    steps {
+	        build job : 'delivery'
 		}
+	}
+	stage('Checking the results of deployment'){
+	    steps {
+                script {
+                    def jobBuild = build job: 'delivery', propagate: false
+
+                    def jobResult = jobBuild.getResult()
+
+                    echo "Build of 'delivery' returned result: ${jobResult}"
+
+                    buildResults['delivery'] = jobResult
+
+                    if (jobResult != 'SUCCESS') {
+                        error("testJob failed with result: ${jobResult}")
+                    }
+                }
     }
 
     post {
